@@ -1,7 +1,5 @@
-import React, { Component } from 'react';
-
-class CartItem extends Component {
-    
+    //As this component does not contain state now,
+    //we changed it to function component
     //neeed  to bind event handlers
     // if we dont use arrow functions
 
@@ -30,10 +28,12 @@ class CartItem extends Component {
     //     })
     // }
     
-    render() {
-        const {price,title,qty} = this.props.product
+import React from 'react'
+
+const CartItem = (props) => {
+        const {price,title,qty} = props.product
         const {product,onDecreaseQuantity,
-            onIncreaseQuantity,onDeleteProduct} = this.props
+            onIncreaseQuantity,onDeleteProduct} = props
         return (
             <div className='cart-item'>
                 <div className="left-block">
@@ -67,7 +67,6 @@ class CartItem extends Component {
                 </div>
             </div>
         );
-    }
 }
 
 const styles = {
@@ -79,4 +78,5 @@ const styles = {
     }
   }
 
-export default CartItem;
+
+export default CartItem
