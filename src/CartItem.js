@@ -31,8 +31,12 @@
 
 const CartItem = (props) => {
         const {price,title,qty} = props.product
-        const {product,onDecreaseQuantity,
-            onIncreaseQuantity,onDeleteProduct} = props;
+        const {
+            product,
+            onIncreaseQuantity,
+            onDecreaseQuantity,
+            onDeleteProduct
+          } = props;
         return (
             <div className='cart-item'>
                 <div className="left-block">
