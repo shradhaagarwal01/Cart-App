@@ -85,9 +85,9 @@ getCartTotal = () => {
       <Navbar count={this.getCartCount()}/>
       <Cart
       products = {products}
-      onIncreaseQuantity = {this.onIncreaseQuantity}
-      onDecreaseQuantity = {this.onDecreaseQuantity}
-      onDeleteProduct = {this.onDeleteProduct}
+      onIncreaseQuantity = {this.handleIncreaseQuantity}
+      onDecreaseQuantity = {this.handleDecreaseQuantity}
+      onDeleteProduct = {this.handleDeleteProduct}
       />
       <div style={{fontSize:20,padding:10}}>TOTAL: {this.getCartTotal()}</div>
     </div>
