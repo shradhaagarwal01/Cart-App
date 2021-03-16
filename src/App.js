@@ -15,6 +15,8 @@ class App extends Component {
 }
 
 componentDidMount(){
+  //first way of rendering products from database
+
   // firebase
   // .firestore()
   // .collection('products')
@@ -39,8 +41,14 @@ componentDidMount(){
   //attaching a listerner so that changes gets updated itself
   this.db
   .collection('products')
+  //quering the data
+   //.where('price', '>=', 1000 )
+   //.where('title','==',"Laptop")
+   //sort the data according to price
+   .orderBy('price','desc')
   .onSnapshot((snapshot) => {
       console.log(snapshot);
+      // eslint-disable-next-line
       snapshot.docs.map((doc) => {
         console.log(doc.data)
       });
@@ -113,12 +121,26 @@ handleDecreaseQuantity = (product) => {
 }
 }
 
-handleDeleteProduct = (id) => {
+/*handleDeleteProduct = (id) => {
     const {products} = this.state;
     const items = products.filter((item) => item.id!==id);
     this.setState({
         products:items
     })
+}*/
+
+handleDeleteProduct = (id) => {
+  const docRef = this.db.collection('products').doc(id);
+  docRef
+  .delete()
+  .then(() => {
+    console.log("Deleted Successfully")
+  })
+  .catch((err) => {
+    console.log(err)
+  })
+
+  
 }
 
 getCartCount = () => {
